@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Temperature Converter</title>
+</head>
+<body>
+  <div class="main">
+    <h1>Temperature Converter using HTML , CSS and JS</h1>
+    <section class="contain">
+    <h1>Temperature Converter</h1>
+    <label for="celsius">Celsius:</label>
+    <input type="number" id="celsius">
+    <label for="fahrenheit">Fahrenheit:</label>
+    <input type="number" id="fahrenheit">
+     <br><br>
+    <input type="submit" value="Convert" onclick="convertTemp()">
+    <div class="result" id="result"></div>
+    </section>
+</div>
+
+  <script>
+    function convertTemp() {
+      let celsiusInput = document.getElementById("celsius");
+      let fahrenheitInput = document.getElementById("fahrenheit");
+      let resultDiv = document.getElementById("result");
+
+      if (celsiusInput.value !== "") {
+        let celsius = parseFloat(celsiusInput.value);
+        let fahrenheit = (celsius * 9 / 5) + 32;
+        fahrenheitInput.value = fahrenheit.toFixed(2);
+        resultDiv.innerHTML = celsius + " &deg;C = " + fahrenheit.toFixed(2) + " &deg;F";
+      } else if (fahrenheitInput.value !== "") {
+        let fahrenheit = parseFloat(fahrenheitInput.value);
+        let celsius = (fahrenheit - 32) * 5 / 9;
+        celsiusInput.value = celsius.toFixed(2);
+        resultDiv.innerHTML = fahrenheit + " &deg;F = " + celsius.toFixed(2) + " &deg;C";
+      } else {
+        resultDiv.innerHTML = "Please enter a temperature value.";
+      }
+    }
+  </script>
+</body>
+</html>
